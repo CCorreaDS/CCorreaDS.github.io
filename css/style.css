@@ -1,0 +1,916 @@
+/* =========================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+:root {
+    --navy: #06283b;
+    --blue: #07529b;
+    --cyan: #54c9ec;
+    --ink: #101827;
+    --muted: #4c5868;
+    --line: #d7e1eb;
+    --container: 1080px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 76px;
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    background: #ffffff;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(var(--container), calc(100% - 64px));
+    margin-inline: auto;
+}
+
+.skip-link {
+    position: absolute;
+    top: -60px;
+    left: 12px;
+    z-index: 100;
+    padding: 10px 14px;
+    color: #ffffff;
+    background: var(--blue);
+}
+
+.skip-link:focus {
+    top: 10px;
+}
+
+
+/* =========================================================
+   2. CABEÇALHO E NAVEGAÇÃO
+   ========================================================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(255, 255, 255, 0.97);
+    border-bottom: 1px solid #e6ebf0;
+}
+
+.header-inner {
+    min-height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex: 0 0 auto;
+}
+
+.brand-symbol {
+    padding-right: 15px;
+    color: #064987;
+    border-right: 1px solid #cbd5df;
+    font-size: 29px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -4px;
+}
+
+.brand-name {
+    color: #111827;
+    font-size: 19px;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+}
+
+.main-navigation {
+    height: 68px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.main-navigation a {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: #161b25;
+    font-size: 14px;
+    font-weight: 650;
+    white-space: nowrap;
+}
+
+.main-navigation a:hover,
+.main-navigation a.active {
+    color: #0755a0;
+}
+
+.main-navigation a.active::after {
+    position: absolute;
+    right: 0;
+    bottom: 12px;
+    left: 0;
+    height: 3px;
+    background: #1478c9;
+    content: "";
+}
+
+.menu-toggle {
+    display: none;
+}
+
+
+
+/* =========================================================
+   3. HERO — BANNER PRINCIPAL
+   ========================================================= */
+
+
+/* HERO — dimensões originais do mockup */
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 365px;
+    min-height: 365px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    background: #06283b;
+}
+
+/* Imagem original: 1904 × 365 px */
+
+.hero-art {
+    position: absolute;
+    inset: 0;
+    background-image: url("../assets/images/hero-background.png");
+    background-size: contain;
+    background-position: right center;
+    background-repeat: no-repeat;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(var(--container), 90%);
+    margin-inline: auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Gradiente para garantir a legibilidade do texto. */
+
+.hero::after {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    content: "";
+    background: linear-gradient(90deg,
+            rgba(4, 28, 43, 0.94) 0%,
+            rgba(4, 28, 43, 0.82) 35%,
+            rgba(4, 28, 43, 0.35) 62%,
+            rgba(4, 28, 43, 0.04) 100%);
+    pointer-events: none;
+}
+
+/* Alinhamento central do conteúdo do Hero. */
+
+.eyebrow {
+    margin: 0 0 12px;
+    color: #72d6f3;
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    margin: 0 0 10px;
+    color: #ffffff;
+    font-size: clamp(44px, 4.2vw, 58px);
+    font-weight: 760;
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.hero-specialities {
+    margin: 14px 0 20px;
+    color: #54c9ef;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    line-height: 1.5;
+}
+
+.hero-specialities span {
+    padding-inline: 9px;
+    color: #b6eaff;
+}
+
+.accent-line {
+    width: 58px;
+    height: 4px;
+    display: block;
+    margin: 0 0 17px;
+    background: var(--cyan);
+}
+
+.hero-description {
+    margin: 0 0 25px;
+    color: #f1f5f9;
+    font-size: 19px;
+    line-height: 1.6;
+}
+
+.button {
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 17px;
+    padding: 0 23px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 750;
+}
+
+.button-primary {
+    color: #06283b;
+    background: #70cbed;
+}
+
+.button-primary:hover {
+    background: #9ce3f8;
+}
+
+.button span {
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* =========================================================
+   4. SERVIÇOS
+   ========================================================= */
+
+.services-section {
+    padding: 34px 0 38px;
+    background: #ffffff;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.service-card {
+    min-height: 225px;
+    padding: 22px 21px 19px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(16, 39, 61, 0.025);
+}
+
+.service-heading {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.service-icon {
+    width: 53px;
+    height: 50px;
+    flex: 0 0 53px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    color: #064987;
+    background: #e1edf7;
+    font-family: Georgia, serif;
+    font-size: 36px;
+}
+
+.service-heading h2 {
+    margin: 0;
+    color: #111827;
+    font-size: 19px;
+    font-weight: 750;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+}
+
+.service-card p {
+    min-height: 70px;
+    margin: 0 0 14px;
+    color: #17202d;
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #0756a3;
+    font-size: 15px;
+    font-weight: 750;
+}
+
+.card-link span {
+    font-size: 19px;
+}
+
+.card-link:hover {
+    color: #0084c7;
+}
+
+.service-icon svg {
+    width: 36px;
+    height: 36px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+}
+
+
+/* =========================================================
+   5. ABORDAGEM DE TRABALHO
+   ========================================================= */
+
+.approach-section {
+    padding: 32px 0 34px;
+    background: #f0f4f8;
+}
+
+.section-title {
+    margin: 0;
+    color: #111827;
+    font-size: 31px;
+    font-weight: 760;
+    line-height: 1.25;
+    letter-spacing: -0.8px;
+}
+
+.approach-section .accent-line,
+.about-section .accent-line {
+    margin-top: 13px;
+    margin-bottom: 20px;
+}
+
+.approach-flow {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    padding: 0 15px;
+}
+
+.approach-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.approach-icon {
+    width: 68px;
+    height: 68px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 9px;
+    border-radius: 50%;
+    color: #064987;
+    background: #dceaf5;
+}
+
+.approach-icon svg {
+    width: 39px;
+    height: 39px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.approach-step h3 {
+    margin: 0;
+    color: #111827;
+    font-size: 15px;
+    font-weight: 750;
+    line-height: 1.4;
+}
+
+.flow-arrow {
+    color: #3b9bdc;
+    font-size: 24px;
+    text-align: center;
+}
+
+
+/* =========================================================
+   6. SOBRE
+   ========================================================= */
+
+.about-section {
+    padding: 40px 0 42px;
+    background: #ffffff;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-copy p {
+    max-width: 600px;
+    margin: 0 0 22px;
+    color: #17202d;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.button-outline {
+    min-height: 46px;
+    border: 1.5px solid #0759a8;
+    color: #073e78;
+    background: #ffffff;
+}
+
+.button-outline:hover {
+    color: #ffffff;
+    background: #0759a8;
+}
+
+/* Imagem original do mockup, sem SVG adicional. */
+
+.network-visual {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: #0b2b40;
+    background-image: url("../assets/images/about-network.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: 0 2px 7px rgba(10, 35, 55, 0.12);
+}
+
+
+/* =========================================================
+   7. PROJETOS E PUBLICAÇÕES
+   ========================================================= */
+
+.additional-section {
+    padding: 48px 0;
+    border-top: 1px solid #e8edf2;
+    background: #f7f9fb;
+}
+
+.publications-section {
+    background: #ffffff;
+}
+
+.additional-section p {
+    max-width: 720px;
+    margin: 14px 0 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   8. CONTACTO
+   ========================================================= */
+
+.contact-section {
+    padding: 48px 0;
+    color: #ffffff;
+    background: var(--navy);
+}
+
+.contact-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.contact-inner h2 {
+    margin: 0;
+    font-size: 31px;
+    line-height: 1.25;
+    letter-spacing: -0.7px;
+}
+
+.contact-links {
+    width: min(100%, 300px);
+    border-top: 1px solid rgba(210, 232, 245, 0.25);
+}
+
+.contact-links a {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 2px;
+    border-bottom: 1px solid rgba(210, 232, 245, 0.25);
+    color: #eaf5fb;
+    font-size: 15px;
+}
+
+.contact-links a:hover {
+    color: #70d7f2;
+}
+
+
+/* =========================================================
+   9. RODAPÉ
+   ========================================================= */
+
+.site-footer {
+    padding: 18px 0;
+    color: #aab8c7;
+    background: #061725;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    font-size: 12px;
+}
+
+.footer-inner p {
+    margin: 0;
+}
+
+.footer-inner .brand-name {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.footer-inner .brand-symbol {
+    color: #72d6f3;
+    border-color: #476073;
+    font-size: 21px;
+}
+
+
+/* =========================================================
+   10. TABLETS
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .container {
+        width: calc(100% - 48px);
+    }
+
+    .main-navigation {
+        gap: 14px;
+    }
+
+    .main-navigation a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 370px;
+    }
+
+
+    .hero-content {
+        width: calc(100% - 48px);
+    }
+
+
+    .hero-art {
+        background-position: 58% center;
+    }
+
+    .hero-specialities {
+        font-size: 19px;
+    }
+
+    .about-grid {
+        gap: 28px;
+    }
+
+    .service-grid {
+        gap: 14px;
+    }
+
+    .service-card {
+        padding-inline: 16px;
+    }
+
+    .service-heading {
+        gap: 10px;
+    }
+
+    .service-heading h2 {
+        font-size: 17px;
+    }
+
+    .service-card p {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   11. DISPOSITIVOS MÓVEIS
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .container {
+        width: calc(100% - 36px);
+    }
+
+    /* Cabeçalho */
+
+    .header-inner {
+        min-height: 64px;
+    }
+
+    .brand-symbol {
+        font-size: 25px;
+    }
+
+    .brand-name {
+        font-size: 16px;
+    }
+
+    .menu-toggle {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: #ffffff;
+    }
+
+    .menu-toggle span {
+        width: 17px;
+        height: 2px;
+        background: var(--ink);
+    }
+
+    .main-navigation {
+        position: absolute;
+        top: 64px;
+        right: 0;
+        left: 0;
+        height: auto;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 18px 15px;
+        border-bottom: 1px solid var(--line);
+        background: #ffffff;
+    }
+
+    .main-navigation.is-open {
+        display: flex;
+    }
+
+    .main-navigation a {
+        min-height: 44px;
+        font-size: 14px;
+    }
+
+    .main-navigation a.active::after {
+        right: auto;
+        bottom: 3px;
+        width: 36px;
+    }
+
+    /* Hero */
+
+    .hero {
+        min-height: 390px;
+    }
+
+    .hero-art {
+        background-position: 65% center;
+    }
+
+    .hero::after {
+        background: linear-gradient(90deg,
+                rgba(4, 28, 43, 0.94) 0%,
+                rgba(4, 28, 43, 0.82) 55%,
+                rgba(4, 28, 43, 0.40) 100%);
+    }
+
+    .hero-content {
+        width: calc(100% - 36px);
+        margin-inline: auto;
+        padding-block: 45px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-specialities {
+        max-width: 440px;
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .hero-specialities span {
+        padding-inline: 3px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .desktop-break {
+        display: none;
+    }
+
+    /* Serviços */
+
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .service-card {
+        min-height: 0;
+        padding: 20px;
+    }
+
+    .service-heading h2 {
+        font-size: 18px;
+    }
+
+    .service-card p {
+        min-height: 0;
+        font-size: 15px;
+    }
+
+    /* Abordagem */
+
+    .approach-section {
+        padding-block: 32px;
+    }
+
+    .section-title {
+        font-size: 27px;
+    }
+
+    .approach-flow {
+        grid-template-columns: 1fr;
+        gap: 9px;
+        padding: 0;
+    }
+
+    .approach-step {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 15px;
+        text-align: left;
+    }
+
+    .approach-icon {
+        width: 52px;
+        height: 52px;
+        flex: 0 0 52px;
+        margin: 0;
+    }
+
+    .approach-icon svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .approach-step h3 {
+        font-size: 15px;
+    }
+
+    .flow-arrow {
+        transform: rotate(90deg);
+        font-size: 19px;
+        line-height: 1;
+    }
+
+    /* Sobre */
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .about-copy p {
+        font-size: 15px;
+    }
+
+    .network-visual {
+        height: 200px;
+    }
+
+    /* Contacto */
+
+    .contact-inner {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .contact-links {
+        width: 100%;
+    }
+
+    /* Rodapé */
+
+    .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+    }
+}
+
+
+/* =========================================================
+   12. ECRÃS MUITO PEQUENOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero-specialities {
+        font-size: 15px;
+    }
+
+    .hero-specialities span {
+        padding-inline: 1px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .brand {
+        gap: 9px;
+    }
+
+    .brand-name {
+        font-size: 14px;
+    }
+}
+
+
+/* =========================================================
+   13. ACESSIBILIDADE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+}
