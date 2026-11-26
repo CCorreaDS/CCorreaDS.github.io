@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Publicações e produção técnico-científica de Cláudio Corrêa.">
+    <meta name="theme-color" content="#ffffff">
+    <title>Publicações | Cláudio Corrêa</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <script src="../js/main.js" defer></script>
+
+    <style>
+        /* Estilos exclusivos da página de publicações */
+        .publication-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+            margin-top: 36px;
+        }
+
+        .publication-card {
+            padding: 30px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background: #ffffff;
+            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 26px rgba(15, 23, 42, 0.10);
+        }
+
+        .publication-type {
+            display: inline-block;
+            margin-bottom: 14px;
+            color: #087e8b;
+            font-size: 0.76rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .publication-card h3 {
+            margin-bottom: 14px;
+            color: #17324d;
+            font-size: 1.25rem;
+            line-height: 1.45;
+        }
+
+        .publication-authors {
+            margin-bottom: 12px;
+            color: #475569;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .publication-description {
+            margin-bottom: 18px;
+            color: #475569;
+            line-height: 1.75;
+        }
+
+        .publication-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            margin-bottom: 20px;
+            color: #64748b;
+            font-size: 0.88rem;
+        }
+
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #087e8b;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .publication-link:hover {
+            text-decoration: underline;
+        }
+
+        .publication-link:focus-visible {
+            outline: 2px solid #087e8b;
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 600px) {
+            .publication-card {
+                padding: 22px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .publication-card {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="../index.html" aria-label="Cláudio Corrêa — início">
+                <img src="../logotipo/MonogramaCC.png" alt="" class="brand-monogram" aria-hidden="true"
+                    style="width: 72px; height: 48px; object-fit: contain; display: block;">
+                <span class="brand-name">Cláudio Corrêa</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-navigation"
+                aria-label="Abrir navegação">
+                <span></span><span></span><span></span>
+            </button>
+
+            <nav class="main-navigation" id="main-navigation" aria-label="Navegação principal">
+                <a href="../index.html">Início</a>
+                <a href="perfil.html">Perfil</a>
+                <a href="modelacao-matematica.html">Modelação Matemática</a>
+                <a href="ciencia-dados.html">Ciência de Dados</a>
+                <a href="formacao.html">Formação</a>
+                <a href="projetos.html">Projetos</a>
+                <a class="active" href="publicacoes.html">Publicações</a>
+                <a href="contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="conteudo">
+        <section class="page-heading">
+            <div class="container">
+                <p class="eyebrow">PRODUÇÃO TÉCNICO-CIENTÍFICA</p>
+                <h1>Publicações</h1>
+                <span class="accent-line"></span>
+                <p class="page-intro">
+                    Espaço dedicado à divulgação de artigos, trabalhos científicos,
+                    notas técnicas e outros materiais de carácter académico.
+                </p>
+            </div>
+        </section>
+
+        <section class="publication-content-section">
+            <div class="container">
+
+                <div class="publication-intro">
+                    <h2 class="section-title">Produção científica e técnica</h2>
+                    <p>
+                        Contributos nas áreas da Matemática Aplicada, Modelação Matemática,
+                        Otimização, Estatística, Ciência de Dados e Computação Científica.
+                    </p>
+                </div>
+
+                <div class="publication-list">
+
+                    <!-- Artigo técnico sobre otimização -->
+                    <article class="publication-card">
+                        <span class="publication-type">
+                            Artigo técnico | Otimização
+                        </span>
+
+                        <h3>
+                            Como um modelo de otimização ajuda a escolher locais:
+                            um exemplo prático com dados abertos
+                        </h3>
+
+                        <p class="publication-description">
+                            Estudo de caso sobre a aplicação de um modelo de localização
+                            K-Median para determinar cinco localizações destinadas à
+                            instalação de cafetarias, considerando 82 bibliotecas públicas
+                            como pontos de procura. A implementação utiliza Python,
+                            Pyomo e o solver HiGHS para minimizar a distância geográfica
+                            total entre os pontos de procura e os estabelecimentos selecionados.
+                        </p>
+
+                        <div class="publication-meta">
+                            <span>Área: Investigação Operacional</span>
+                            <span>Modelo: K-Median</span>
+                            <span>Ferramentas: Python, Pyomo e HiGHS</span>
+                        </div>
+
+                        <a class="publication-link"
+                            href="../producao/Como%20um%20modelo%20de%20otimiza%C3%A7%C3%A3o%20ajuda%20a%20escolher%20locais.pdf"
+                            target="_blank" rel="noopener noreferrer">
+                            Consultar artigo (PDF) →
+                        </a>
+                    </article>
+
+                    <!-- Artigo científico apresentado no HIC 2026 -->
+                    <article class="publication-card">
+                        <span class="publication-type">
+                            Artigo científico | Conferência internacional
+                        </span>
+
+                        <h3>
+                            Numerical Models for Decision Support in Earth Tanks Aquaculture
+                        </h3>
+
+                        <p class="publication-authors">
+                            <strong>Autores:</strong>
+                            Cláudio Corrêa, Mustafa Shubari, Miguel Leopoldo,
+                            Diogo Almeida, Ashraf, M. A., Cristina Rocha,
+                            Pedro Furtado e Rita F. Carvalho.
+                        </p>
+
+                        <p class="publication-description">
+                            Trabalho sobre a integração de modelos numéricos para apoio
+                            à decisão em sistemas de aquacultura em tanques de terra.
+                            Aborda a modelação do crescimento dos peixes, o arejamento
+                            e a renovação da água, com recurso a modelos físicos,
+                            bioenergéticos e ferramentas de análise computacional.
+                        </p>
+
+                        <div class="publication-meta">
+                            <span>Evento: HIC 2026</span>
+                            <span>Zaragoza, Espanha</span>
+                            <span>22–26 de junho de 2026</span>
+                            <span>Paper ID: 266</span>
+                        </div>
+
+                        <a class="publication-link" href="../producao/HIC2026_full_paper__266.pdf" target="_blank"
+                            rel="noopener noreferrer">
+                            Consultar artigo completo (PDF) →
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <a class="brand" href="../index.html">
+                <img src="../logotipo/MonogramaCC.png" alt="" class="brand-monogram" aria-hidden="true"
+                    style="width: 72px; height: 48px; object-fit: contain; display: block;">
+                <span class="brand-name">Cláudio Corrêa</span>
+            </a>
+
+            <p>Modelação Matemática · Ciência de Dados · Formação</p>
+
+            <span>© <span id="current-year"></span> Cláudio Corrêa</span>
+        </div>
+    </footer>
+</body>
+
+</html>
