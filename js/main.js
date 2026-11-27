@@ -50,23 +50,23 @@ if (counterValue) {
   }
 
   counterScript.addEventListener('load', async () => {
-    try {
-      const response = await fetch(
-        'https://claudiocorreads.goatcounter.com/counter//.json'
-      );
+  try {
+    const response = await fetch(
+      'https://claudiocorreads.goatcounter.com/counter//.json'
+    );
 
-      if (!response.ok) {
-        throw new Error('Não foi possível obter o total de visitas.');
-      }
+    const data = await response.json();
 
-      const data = await response.json();
-
-      counterValue.textContent = data.count ?? 'Indisponível';
-
-    } catch {
-      counterValue.textContent = 'Indisponível';
+    if (typeof data.count === 'undefined') {
+      throw new Error('Resposta inválida do GoatCounter.');
     }
-  });
+
+    counterValue.textContent = data.count;
+
+  } catch (error) {
+    counterValue.textContent = 'Indisponível';
+  }
+});
 
   counterScript.addEventListener('error', () => {
     counterValue.textContent = 'Indisponível';
