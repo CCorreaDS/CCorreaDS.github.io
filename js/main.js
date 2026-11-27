@@ -52,7 +52,7 @@ if (counterValue) {
   counterScript.addEventListener('load', async () => {
     try {
       const response = await fetch(
-        'https://claudiocorreads.goatcounter.com/counter/TOTAL.json'
+        'https://claudiocorreads.goatcounter.com/counter/.json'
       );
 
       if (!response.ok) {
