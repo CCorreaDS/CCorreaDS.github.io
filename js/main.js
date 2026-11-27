@@ -1,3 +1,4 @@
+
 // Controla a navegação móvel e o ano apresentado no rodapé.
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#main-navigation');
@@ -5,8 +6,10 @@ const navigation = document.querySelector('#main-navigation');
 if (menuButton && navigation) {
   menuButton.addEventListener('click', () => {
     const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+
     menuButton.setAttribute('aria-expanded', String(!isOpen));
     menuButton.setAttribute('aria-label', isOpen ? 'Abrir navegação' : 'Fechar navegação');
+
     navigation.classList.toggle('is-open', !isOpen);
   });
 
@@ -19,5 +22,55 @@ if (menuButton && navigation) {
   });
 }
 
+// Actualiza automaticamente o ano apresentado no rodapé.
 const yearElement = document.querySelector('#current-year');
-if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+if (yearElement) {
+  yearElement.textContent = new Date().getFullYear();
+}
+
+// Configuração do contador de visitas GoatCounter.
+const goatCounterEndpoint = 'https://claudiocorreads.goatcounter.com/count';
+
+const counterValue = document.querySelector('#visitor-counter-value');
+
+if (counterValue) {
+  const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+
+  const counterScript = document.createElement('script');
+
+  counterScript.src = 'https://gc.zgo.at/count.js';
+  counterScript.async = true;
+  counterScript.dataset.goatcounter = goatCounterEndpoint;
+
+  if (isLocalhost) {
+    counterScript.dataset.goatcounterSettings = JSON.stringify({
+      allow_local: true
+    });
+  }
+
+  counterScript.addEventListener('load', async () => {
+    try {
+      const response = await fetch(
+        'https://claudiocorreads.goatcounter.com/counter/TOTAL.json'
+      );
+
+      if (!response.ok) {
+        throw new Error('Não foi possível obter o total de visitas.');
+      }
+
+      const data = await response.json();
+
+      counterValue.textContent = data.count ?? 'Indisponível';
+
+    } catch {
+      counterValue.textContent = 'Indisponível';
+    }
+  });
+
+  counterScript.addEventListener('error', () => {
+    counterValue.textContent = 'Indisponível';
+  });
+
+  document.head.appendChild(counterScript);
+}

@@ -138,7 +138,6 @@ a {
 }
 
 
-
 /* =========================================================
    3. HERO — BANNER PRINCIPAL
    ========================================================= */
@@ -268,6 +267,7 @@ a {
     font-size: 20px;
     line-height: 1;
 }
+
 
 /* =========================================================
    4. SERVIÇOS
@@ -611,11 +611,9 @@ a {
         min-height: 370px;
     }
 
-
     .hero-content {
         width: calc(100% - 48px);
     }
-
 
     .hero-art {
         background-position: 58% center;
@@ -912,5 +910,39 @@ a {
 
     html {
         scroll-behavior: auto;
+    }
+}
+
+
+/* =========================================================
+   14. CONTADOR DE VISITAS
+   ========================================================= */
+
+.visitor-counter {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #aab8c7;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.visitor-counter-label::after {
+    content: ":";
+}
+
+.visitor-counter-value {
+    color: #ffffff;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.visitor-counter-value:empty {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .visitor-counter {
+        flex-wrap: wrap;
     }
 }
